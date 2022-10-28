@@ -1,35 +1,25 @@
 import React from 'react'
+import { label_input } from './api/api_dados'
 import Input from './Input'
-import Select from './Select'
+import { SelectCity, SelectCountry } from './Select'
 
 const Form = () => {
   return (
     <div className="flex flex-col justify-center items-center">
       <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <Input
-          label="Nome"
-          type="text"
-          placeholder="Digite seu nome"
-          id="nome"
-        />
-        <Input
-          label="Email"
-          type="password"
-          placeholder="Digite seu email"
-          id="email"
-        />
-        <Input
-          label="Telefone"
-          type="text"
-          placeholder="Digite seu telefone"
-          id="telefone"
-        />
-        <Input label="Cpf" type="text" placeholder="Digite seu cpf" id="cpf" />
-
+        {label_input.map((input) => (
+          <Input
+            label={input.label}
+            type={input.type}
+            placeholder={input.placeholder}
+            id={input.id}
+            key={input.id}
+          />
+        ))}
         <hr />
 
-        <Select label="Cidade" />
-        <Select label="País" />
+        <SelectCity label="Cidade" />
+        <SelectCountry label="País" />
       </form>
     </div>
   )
